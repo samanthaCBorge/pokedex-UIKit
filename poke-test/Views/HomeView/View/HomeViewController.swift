@@ -20,6 +20,14 @@ final class HomeViewController: UICollectionViewController {
     private var subscription: AnyCancellable?
     private let viewModel: HomeViewModelRepresentable
     
+    private lazy var cancelButtonItem: UIBarButtonItem = {
+        let buttonItem = UIBarButtonItem(title: "Cancel", primaryAction: UIAction { [unowned self] _ in
+            viewModel.exit()
+        })
+        buttonItem.tintColor = .red
+        return buttonItem
+    }()
+    
     init(viewModel: HomeViewModelRepresentable) {
         self.viewModel = viewModel
         super.init(collectionViewLayout: Self.generateLayout())
@@ -34,13 +42,15 @@ final class HomeViewController: UICollectionViewController {
         setUI()
         bindUI()
     }
-    
+
     private func setUI() {
         navigationController?.isNavigationBarHidden = false
         navigationItem.setHidesBackButton(true, animated: false)
-        title = "Regions"
-        safeAreaLayoutGuideAtSafe()
+        navigationItem.rightBarButtonItem = cancelButtonItem
+        setTitle("Regions", andImage: UIImage(named: "region")!)
         viewModel.loadData()
+        safeAreaLayoutGuideAtSafe()
+        view.backgroundColor = .systemBackground
     }
     
     private func bindUI() {
@@ -60,8 +70,10 @@ final class HomeViewController: UICollectionViewController {
     
     private let registerRegionCell = UICollectionView.CellRegistration<UICollectionViewListCell, Region> { cell, indexPath, region in
         var configuration = cell.defaultContentConfiguration()
-        configuration.text = region.name.capitalized
+        configuration.text = region.name
+        configuration.textProperties.font = UIFont(name: "PokemonGB", size: 18) ?? UIFont.systemFont(ofSize: 18)
         
+        cell.accessories = [.disclosureIndicator()]
         cell.contentConfiguration = configuration
     }
     
@@ -78,27 +90,16 @@ final class HomeViewController: UICollectionViewController {
         Section.allCases.forEach { snapshot.appendItems(regions, toSection: $0) }
         dataSource.apply(snapshot)
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let region = dataSource.itemIdentifier(for: indexPath) else { return }
+        viewModel.goToPokedex(model: region)
+    }
 }
 
 extension HomeViewController {
     static private func generateLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
-            
-            let fraction: CGFloat = 1 / 2
-            
-            // Item
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(fraction), heightDimension: .fractionalHeight(1))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            
-            // Group
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalWidth(fraction))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-            
-            // Section
-            
-            let section = NSCollectionLayoutSection(group: group)
-            return section
-        }
-        return layout
+        let listConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        return UICollectionViewCompositionalLayout.list(using: listConfig)
     }
 }

@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE3E3E322A1FB284006B8097 /* Pokedex.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E3E312A1FB284006B8097 /* Pokedex.swift */; };
+		CE3E3E342A1FB2BB006B8097 /* PokedexResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E3E332A1FB2BB006B8097 /* PokedexResponse.swift */; };
+		CE3E3E362A1FB31F006B8097 /* PokedexViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3E3E352A1FB31F006B8097 /* PokedexViewModel.swift */; };
+		CE4FB22D2A21042D00312F6C /* PokemonListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FB22C2A21042D00312F6C /* PokemonListCoordinator.swift */; };
+		CE4FB22F2A21047200312F6C /* PokemonListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FB22E2A21047200312F6C /* PokemonListViewModel.swift */; };
+		CE4FB2312A21064F00312F6C /* PokemonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FB2302A21064F00312F6C /* PokemonResponse.swift */; };
+		CE4FB2332A21067000312F6C /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FB2322A21067000312F6C /* Pokemon.swift */; };
+		CE4FB2362A210B5300312F6C /* PokemonListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FB2352A210B5300312F6C /* PokemonListViewController.swift */; };
+		CE4FB2392A21157A00312F6C /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = CE4FB2382A21157A00312F6C /* GoogleSignIn */; };
+		CE4FB23B2A21157A00312F6C /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CE4FB23A2A21157A00312F6C /* GoogleSignInSwift */; };
+		CE4FB23D2A21162500312F6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE4FB23C2A21162500312F6C /* GoogleService-Info.plist */; };
+		CE4FB2432A21180A00312F6C /* LogInViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4FB2422A21180A00312F6C /* LogInViewController.xib */; };
+		CE4FB2452A21181700312F6C /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4FB2442A21181700312F6C /* LogInViewController.swift */; };
 		CE8A40AB2A1BF9B40027FE90 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = CE8A40AA2A1BF9B40027FE90 /* FirebaseAnalytics */; };
 		CE8A40AD2A1BF9B40027FE90 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = CE8A40AC2A1BF9B40027FE90 /* FirebaseDatabase */; };
 		CE8A40AF2A1BF9B40027FE90 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CE8A40AE2A1BF9B40027FE90 /* FirebaseDatabaseSwift */; };
@@ -20,15 +33,26 @@
 		CE8A40C22A1C00AB0027FE90 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A40C12A1C00AB0027FE90 /* HomeViewController.swift */; };
 		CE8A40C52A1C02D50027FE90 /* UIAlertController+Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A40C42A1C02D50027FE90 /* UIAlertController+Builder.swift */; };
 		CE8A40C92A1C03510027FE90 /* UICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A40C82A1C03510027FE90 /* UICollectionViewController.swift */; };
+		CE8C94222A1E9C9D00193F5C /* ImageCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C94212A1E9C9D00193F5C /* ImageCacheStore.swift */; };
+		CE8C94242A1EAEC200193F5C /* PokemonGB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8C94232A1EAD0800193F5C /* PokemonGB.ttf */; };
 		CECC75E02974E11C00A77A30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC75DF2974E11C00A77A30 /* AppDelegate.swift */; };
 		CECC75E92974E11C00A77A30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECC75E82974E11C00A77A30 /* Assets.xcassets */; };
 		CECC75EC2974E11C00A77A30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECC75EA2974E11C00A77A30 /* LaunchScreen.storyboard */; };
-		CECFF8F62A1BF6260079CECE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CECFF8F52A1BF6260079CECE /* GoogleService-Info.plist */; };
+		CED9E2612A2120A000B27DE5 /* LogInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9E2602A2120A000B27DE5 /* LogInCoordinator.swift */; };
+		CED9E2632A21211500B27DE5 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9E2622A21211500B27DE5 /* LogInViewModel.swift */; };
+		CED9E2652A2121B400B27DE5 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9E2642A2121B400B27DE5 /* UserDefaultsManager.swift */; };
+		CED9E2682A2123F800B27DE5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CED9E2672A2123F800B27DE5 /* FirebaseAuth */; };
 		CEEFB7FB29AE4AA800DFE86B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEFB7FA29AE4AA800DFE86B /* Coordinator.swift */; };
 		CEEFB7FE29AE4AE200DFE86B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEFB7FD29AE4AE200DFE86B /* App.swift */; };
 		CEEFB80029AE4AEC00DFE86B /* AppTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEFB7FF29AE4AEC00DFE86B /* AppTransition.swift */; };
 		CEEFB80229AE4B9E00DFE86B /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEFB80129AE4B9E00DFE86B /* Router.swift */; };
 		CEEFB80529AE4C2D00DFE86B /* AppStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEFB80429AE4C2D00DFE86B /* AppStyle.swift */; };
+		CEF907812A1FEADF00C346F4 /* PokedexListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF907802A1FEADF00C346F4 /* PokedexListViewController.swift */; };
+		CEF907832A1FEB1000C346F4 /* PokedexListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF907822A1FEB1000C346F4 /* PokedexListCoordinator.swift */; };
+		CEF907852A1FFE7600C346F4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF907842A1FFE7600C346F4 /* UIViewController.swift */; };
+		CEF9078B2A20044E00C346F4 /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9078A2A20044E00C346F4 /* WelcomeCoordinator.swift */; };
+		CEF9078D2A2004B200C346F4 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF9078C2A2004B200C346F4 /* WelcomeViewModel.swift */; };
+		CEF907912A20051400C346F4 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF907902A20051400C346F4 /* WelcomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +73,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE3E3E312A1FB284006B8097 /* Pokedex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedex.swift; sourceTree = "<group>"; };
+		CE3E3E332A1FB2BB006B8097 /* PokedexResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexResponse.swift; sourceTree = "<group>"; };
+		CE3E3E352A1FB31F006B8097 /* PokedexViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexViewModel.swift; sourceTree = "<group>"; };
+		CE4FB22C2A21042D00312F6C /* PokemonListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListCoordinator.swift; sourceTree = "<group>"; };
+		CE4FB22E2A21047200312F6C /* PokemonListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListViewModel.swift; sourceTree = "<group>"; };
+		CE4FB2302A21064F00312F6C /* PokemonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonResponse.swift; sourceTree = "<group>"; };
+		CE4FB2322A21067000312F6C /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		CE4FB2352A210B5300312F6C /* PokemonListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonListViewController.swift; sourceTree = "<group>"; };
+		CE4FB23C2A21162500312F6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CE4FB2422A21180A00312F6C /* LogInViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LogInViewController.xib; sourceTree = "<group>"; };
+		CE4FB2442A21181700312F6C /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		CE8A40B42A1BFBB60027FE90 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		CE8A40B62A1BFBBF0027FE90 /* Failure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Failure.swift; sourceTree = "<group>"; };
 		CE8A40B92A1BFC0D0027FE90 /* Region.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Region.swift; sourceTree = "<group>"; };
@@ -58,6 +93,8 @@
 		CE8A40C12A1C00AB0027FE90 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CE8A40C42A1C02D50027FE90 /* UIAlertController+Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Builder.swift"; sourceTree = "<group>"; };
 		CE8A40C82A1C03510027FE90 /* UICollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewController.swift; sourceTree = "<group>"; };
+		CE8C94212A1E9C9D00193F5C /* ImageCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheStore.swift; sourceTree = "<group>"; };
+		CE8C94232A1EAD0800193F5C /* PokemonGB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PokemonGB.ttf; sourceTree = "<group>"; };
 		CECC75DC2974E11C00A77A30 /* poke-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "poke-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECC75DF2974E11C00A77A30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECC75E82974E11C00A77A30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -65,12 +102,20 @@
 		CECC75ED2974E11C00A77A30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CECC75F22974E11D00A77A30 /* poke-testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "poke-testTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECC75FC2974E11D00A77A30 /* poke-testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "poke-testUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CECFF8F52A1BF6260079CECE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CED9E2602A2120A000B27DE5 /* LogInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCoordinator.swift; sourceTree = "<group>"; };
+		CED9E2622A21211500B27DE5 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
+		CED9E2642A2121B400B27DE5 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		CEEFB7FA29AE4AA800DFE86B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		CEEFB7FD29AE4AE200DFE86B /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		CEEFB7FF29AE4AEC00DFE86B /* AppTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTransition.swift; sourceTree = "<group>"; };
 		CEEFB80129AE4B9E00DFE86B /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		CEEFB80429AE4C2D00DFE86B /* AppStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStyle.swift; sourceTree = "<group>"; };
+		CEF907802A1FEADF00C346F4 /* PokedexListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexListViewController.swift; sourceTree = "<group>"; };
+		CEF907822A1FEB1000C346F4 /* PokedexListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexListCoordinator.swift; sourceTree = "<group>"; };
+		CEF907842A1FFE7600C346F4 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		CEF9078A2A20044E00C346F4 /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
+		CEF9078C2A2004B200C346F4 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		CEF907902A20051400C346F4 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +123,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4FB2392A21157A00312F6C /* GoogleSignIn in Frameworks */,
 				CE8A40AF2A1BF9B40027FE90 /* FirebaseDatabaseSwift in Frameworks */,
 				CE8A40AD2A1BF9B40027FE90 /* FirebaseDatabase in Frameworks */,
+				CE4FB23B2A21157A00312F6C /* GoogleSignInSwift in Frameworks */,
 				CE8A40B22A1BFA470027FE90 /* CodableFirebase in Frameworks */,
+				CED9E2682A2123F800B27DE5 /* FirebaseAuth in Frameworks */,
 				CE8A40AB2A1BF9B40027FE90 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +150,121 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE3E3E2C2A1FB21F006B8097 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				CE8C94232A1EAD0800193F5C /* PokemonGB.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		CE3E3E2D2A1FB233006B8097 /* PokedexListView */ = {
+			isa = PBXGroup;
+			children = (
+				CEF907822A1FEB1000C346F4 /* PokedexListCoordinator.swift */,
+				CE3E3E302A1FB266006B8097 /* Model */,
+				CE3E3E2E2A1FB23A006B8097 /* View */,
+				CE3E3E2F2A1FB25E006B8097 /* ViewModel */,
+			);
+			path = PokedexListView;
+			sourceTree = "<group>";
+		};
+		CE3E3E2E2A1FB23A006B8097 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEF907802A1FEADF00C346F4 /* PokedexListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE3E3E2F2A1FB25E006B8097 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E3E352A1FB31F006B8097 /* PokedexViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE3E3E302A1FB266006B8097 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE3E3E312A1FB284006B8097 /* Pokedex.swift */,
+				CE3E3E332A1FB2BB006B8097 /* PokedexResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE4FB2282A2103D800312F6C /* PokemonListView */ = {
+			isa = PBXGroup;
+			children = (
+				CE4FB22A2A2103E800312F6C /* Model */,
+				CE4FB2292A2103E200312F6C /* View */,
+				CE4FB22B2A2103EE00312F6C /* ViewModel */,
+				CE4FB22C2A21042D00312F6C /* PokemonListCoordinator.swift */,
+			);
+			path = PokemonListView;
+			sourceTree = "<group>";
+		};
+		CE4FB2292A2103E200312F6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE4FB2342A21096E00312F6C /* Cell */,
+				CE4FB2352A210B5300312F6C /* PokemonListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE4FB22A2A2103E800312F6C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE4FB2302A21064F00312F6C /* PokemonResponse.swift */,
+				CE4FB2322A21067000312F6C /* Pokemon.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE4FB22B2A2103EE00312F6C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE4FB22E2A21047200312F6C /* PokemonListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE4FB2342A21096E00312F6C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		CE4FB23E2A2117DE00312F6C /* LogInView */ = {
+			isa = PBXGroup;
+			children = (
+				CED9E2602A2120A000B27DE5 /* LogInCoordinator.swift */,
+				CE4FB23F2A2117EC00312F6C /* View */,
+				CE4FB2402A2117F000312F6C /* ViewModel */,
+			);
+			path = LogInView;
+			sourceTree = "<group>";
+		};
+		CE4FB23F2A2117EC00312F6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE4FB2422A21180A00312F6C /* LogInViewController.xib */,
+				CE4FB2442A21181700312F6C /* LogInViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE4FB2402A2117F000312F6C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CED9E2622A21211500B27DE5 /* LogInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		CE840F602A1D50060053D848 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +315,7 @@
 			children = (
 				CE8A40C42A1C02D50027FE90 /* UIAlertController+Builder.swift */,
 				CE8A40C82A1C03510027FE90 /* UICollectionViewController.swift */,
+				CEF907842A1FFE7600C346F4 /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -161,6 +325,7 @@
 			children = (
 				CECC75DE2974E11C00A77A30 /* poke-test */,
 				CECC75DD2974E11C00A77A30 /* Products */,
+				CED9E2662A2123F800B27DE5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,17 +343,24 @@
 			isa = PBXGroup;
 			children = (
 				CE8A40B32A1BFBA10027FE90 /* Networking */,
-				CEEFB80629AE4C8900DFE86B /* Views */,
 				CEEFB80329AE4C2300DFE86B /* Helpers */,
+				CEEFB80629AE4C8900DFE86B /* Views */,
 				CEEFB7FC29AE4AD600DFE86B /* App */,
 				CEEFB7F829AE4A8C00DFE86B /* Protocols */,
 				CECC75DF2974E11C00A77A30 /* AppDelegate.swift */,
 				CECC75E82974E11C00A77A30 /* Assets.xcassets */,
 				CECC75EA2974E11C00A77A30 /* LaunchScreen.storyboard */,
 				CECC75ED2974E11C00A77A30 /* Info.plist */,
-				CECFF8F52A1BF6260079CECE /* GoogleService-Info.plist */,
+				CE4FB23C2A21162500312F6C /* GoogleService-Info.plist */,
 			);
 			path = "poke-test";
+			sourceTree = "<group>";
+		};
+		CED9E2662A2123F800B27DE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CEEFB7F829AE4A8C00DFE86B /* Protocols */ = {
@@ -220,8 +392,11 @@
 		CEEFB80329AE4C2300DFE86B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				CE3E3E2C2A1FB21F006B8097 /* Fonts */,
 				CE8A40C32A1C02C10027FE90 /* Extensions */,
 				CEEFB80429AE4C2D00DFE86B /* AppStyle.swift */,
+				CE8C94212A1E9C9D00193F5C /* ImageCacheStore.swift */,
+				CED9E2642A2121B400B27DE5 /* UserDefaultsManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -229,9 +404,39 @@
 		CEEFB80629AE4C8900DFE86B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE4FB23E2A2117DE00312F6C /* LogInView */,
+				CE4FB2282A2103D800312F6C /* PokemonListView */,
+				CEF907862A20041A00C346F4 /* WelcomeView */,
+				CE3E3E2D2A1FB233006B8097 /* PokedexListView */,
 				CE8A40B82A1BFBFF0027FE90 /* HomeView */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CEF907862A20041A00C346F4 /* WelcomeView */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9078A2A20044E00C346F4 /* WelcomeCoordinator.swift */,
+				CEF907882A20042900C346F4 /* View */,
+				CEF907892A20043500C346F4 /* ViewModel */,
+			);
+			path = WelcomeView;
+			sourceTree = "<group>";
+		};
+		CEF907882A20042900C346F4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CEF907902A20051400C346F4 /* WelcomeViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CEF907892A20043500C346F4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CEF9078C2A2004B200C346F4 /* WelcomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -255,6 +460,9 @@
 				CE8A40AC2A1BF9B40027FE90 /* FirebaseDatabase */,
 				CE8A40AE2A1BF9B40027FE90 /* FirebaseDatabaseSwift */,
 				CE8A40B12A1BFA470027FE90 /* CodableFirebase */,
+				CE4FB2382A21157A00312F6C /* GoogleSignIn */,
+				CE4FB23A2A21157A00312F6C /* GoogleSignInSwift */,
+				CED9E2672A2123F800B27DE5 /* FirebaseAuth */,
 			);
 			productName = "poke-test";
 			productReference = CECC75DC2974E11C00A77A30 /* poke-test.app */;
@@ -331,6 +539,7 @@
 			packageReferences = (
 				CE8A40A92A1BF9B40027FE90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				CE8A40B02A1BFA470027FE90 /* XCRemoteSwiftPackageReference "CodableFirebase" */,
+				CE4FB2372A21157A00312F6C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = CECC75DD2974E11C00A77A30 /* Products */;
 			projectDirPath = "";
@@ -348,9 +557,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4FB2432A21180A00312F6C /* LogInViewController.xib in Resources */,
 				CECC75EC2974E11C00A77A30 /* LaunchScreen.storyboard in Resources */,
+				CE4FB23D2A21162500312F6C /* GoogleService-Info.plist in Resources */,
 				CECC75E92974E11C00A77A30 /* Assets.xcassets in Resources */,
-				CECFF8F62A1BF6260079CECE /* GoogleService-Info.plist in Resources */,
+				CE8C94242A1EAEC200193F5C /* PokemonGB.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -376,19 +587,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE8A40B52A1BFBB60027FE90 /* APIManager.swift in Sources */,
+				CEF9078D2A2004B200C346F4 /* WelcomeViewModel.swift in Sources */,
+				CED9E2652A2121B400B27DE5 /* UserDefaultsManager.swift in Sources */,
+				CE3E3E322A1FB284006B8097 /* Pokedex.swift in Sources */,
 				CEEFB7FB29AE4AA800DFE86B /* Coordinator.swift in Sources */,
+				CE4FB2312A21064F00312F6C /* PokemonResponse.swift in Sources */,
+				CEF907832A1FEB1000C346F4 /* PokedexListCoordinator.swift in Sources */,
 				CE8A40BE2A1BFF8F0027FE90 /* HomeViewModel.swift in Sources */,
+				CEF907912A20051400C346F4 /* WelcomeViewController.swift in Sources */,
 				CE8A40C02A1BFFEC0027FE90 /* HomeCoordinator.swift in Sources */,
+				CE4FB22D2A21042D00312F6C /* PokemonListCoordinator.swift in Sources */,
+				CE8C94222A1E9C9D00193F5C /* ImageCacheStore.swift in Sources */,
+				CE4FB22F2A21047200312F6C /* PokemonListViewModel.swift in Sources */,
 				CE8A40C22A1C00AB0027FE90 /* HomeViewController.swift in Sources */,
+				CED9E2632A21211500B27DE5 /* LogInViewModel.swift in Sources */,
 				CE8A40B72A1BFBBF0027FE90 /* Failure.swift in Sources */,
+				CED9E2612A2120A000B27DE5 /* LogInCoordinator.swift in Sources */,
 				CEEFB80529AE4C2D00DFE86B /* AppStyle.swift in Sources */,
+				CE3E3E342A1FB2BB006B8097 /* PokedexResponse.swift in Sources */,
 				CE8A40BC2A1BFC160027FE90 /* RegionResponse.swift in Sources */,
 				CE8A40BA2A1BFC0D0027FE90 /* Region.swift in Sources */,
 				CEEFB80229AE4B9E00DFE86B /* Router.swift in Sources */,
+				CEF907852A1FFE7600C346F4 /* UIViewController.swift in Sources */,
+				CEF907812A1FEADF00C346F4 /* PokedexListViewController.swift in Sources */,
 				CE8A40C92A1C03510027FE90 /* UICollectionViewController.swift in Sources */,
 				CEEFB7FE29AE4AE200DFE86B /* App.swift in Sources */,
+				CE4FB2332A21067000312F6C /* Pokemon.swift in Sources */,
+				CE4FB2452A21181700312F6C /* LogInViewController.swift in Sources */,
 				CE8A40C52A1C02D50027FE90 /* UIAlertController+Builder.swift in Sources */,
+				CEF9078B2A20044E00C346F4 /* WelcomeCoordinator.swift in Sources */,
 				CEEFB80029AE4AEC00DFE86B /* AppTransition.swift in Sources */,
+				CE3E3E362A1FB31F006B8097 /* PokedexViewModel.swift in Sources */,
+				CE4FB2362A210B5300312F6C /* PokemonListViewController.swift in Sources */,
 				CECC75E02974E11C00A77A30 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -716,6 +946,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CE4FB2372A21157A00312F6C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		CE8A40A92A1BF9B40027FE90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -735,6 +973,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CE4FB2382A21157A00312F6C /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE4FB2372A21157A00312F6C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		CE4FB23A2A21157A00312F6C /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE4FB2372A21157A00312F6C /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
 		CE8A40AA2A1BF9B40027FE90 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CE8A40A92A1BF9B40027FE90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -754,6 +1002,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CE8A40B02A1BFA470027FE90 /* XCRemoteSwiftPackageReference "CodableFirebase" */;
 			productName = CodableFirebase;
+		};
+		CED9E2672A2123F800B27DE5 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CE8A40A92A1BF9B40027FE90 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

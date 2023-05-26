@@ -5,6 +5,9 @@
 //  Created by Samantha Cruz on 15/1/23.
 //
 
+import FirebaseAuth
+import FirebaseCore
+import GoogleSignIn
 import UIKit
 
 @UIApplicationMain
@@ -19,6 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = app.navigationController
         window?.makeKeyAndVisible()
+        
+        FirebaseApp.configure()
+        let clientID = FirebaseApp.app()?.options.clientID
+        let config = GIDConfiguration(clientID: clientID ?? "")
+        GIDSignIn.sharedInstance.configuration = config
+        
         AppStyle.configureAppearance()
         app.start()
         return true

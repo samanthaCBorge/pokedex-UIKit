@@ -5,6 +5,7 @@
 //  Created by Samantha Cruz on 28/2/23.
 //
 
+import GoogleSignIn
 import UIKit
 
 final class App {
@@ -14,15 +15,23 @@ final class App {
 
 extension App: Coordinator {
     func start() {
-        process(route: .showHome)
+        var isSession: Bool {
+            !UserDefaultsManager.shared.provider.isEmpty
+        }
+        process(route:  isSession ? .showHome : .showLogin)
     }
 } 
 
 extension App: AppRouter {
     
     func exit() {
+        if UserDefaultsManager.shared.provider == Provider.google.rawValue {
+            GIDSignIn.sharedInstance.signOut()
+        }
+
+        UserDefaultsManager.shared.provider = ""
         navigationController.popToRootViewController(animated: true)
-        process(route: .showHome)
+        process(route: .showLogin)
     }
     
     func process(route: AppTransition) {

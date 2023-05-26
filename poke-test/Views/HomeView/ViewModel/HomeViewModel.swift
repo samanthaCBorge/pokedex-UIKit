@@ -11,6 +11,8 @@ import Combine
 protocol HomeViewModelRepresentable {
     var regionListSubject: PassthroughSubject<[Region], Failure> { get }
     func loadData()
+    func goToPokedex(model: Region)
+    func exit()
 }
 
 final class HomeViewModel<R: AppRouter> {
@@ -26,6 +28,14 @@ final class HomeViewModel<R: AppRouter> {
 }
 
 extension HomeViewModel: HomeViewModelRepresentable {
+    
+    func exit() {
+        router?.exit()
+    }
+    
+    func goToPokedex(model: Region) {
+        router?.process(route: .showPokedex(model: model))
+    }
     
     func loadData() {
         let recieved = { (response: RegionResponse) -> Void in

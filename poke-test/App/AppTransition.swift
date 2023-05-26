@@ -9,8 +9,11 @@ import Foundation
 
 enum AppTransition {
     
-//    case showWelcome
+    case showLogin
+    case showWelcome
     case showHome
+    case showPokedex(model: Region)
+    case showPokemons(model: Pokedex)
     
     var hasState: Bool {
         false
@@ -18,8 +21,11 @@ enum AppTransition {
     
     func coordinatorFor<R: AppRouter>(router: R) -> Coordinator {
         switch self {
-//        case .showWelcome: return WelcomeCoordinator(router: router)
+        case .showLogin: return LogInCoordinator(router: router)
+        case .showWelcome: return WelcomeCoordinator(router: router)
         case .showHome: return HomeCoordinator(router: router)
+        case .showPokedex(let model): return PokedexListCoordinator(model: model, router: router)
+        case .showPokemons(let model): return PokemonListCoordinator(model: model, router: router)
         }
     }
 }
@@ -28,8 +34,11 @@ extension AppTransition: Hashable {
     
     var identifier: String {
         switch self {
-//        case .showWelcome: return "showWelcome"
+        case .showLogin: return "showLogin"
+        case .showWelcome: return "showWelcome"
         case .showHome: return "showHome"
+        case .showPokedex: return "showPokedex"
+        case .showPokemons: return "showPokemon"
         }
     }
     
