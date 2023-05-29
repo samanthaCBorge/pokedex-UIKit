@@ -17,7 +17,10 @@ final class WelcomeViewModel<R: AppRouter> {
 
 extension WelcomeViewModel: WelcomeViewModelRepresentable {
     func goToPokemon() {
-        router?.process(route: .showHome)
+        var isSession: Bool {
+            !UserDefaultsManager.shared.provider.isEmpty
+        }
+        router?.process(route:  isSession ? .showHome : .showLogin)
     }
 }
 

@@ -24,6 +24,11 @@ final class LogInCoordinator<R: AppRouter> {
 
 extension LogInCoordinator: Coordinator {
     func start() {
-        router.navigationController.pushViewController(primaryViewController, animated: true)
+        if router.navigationController.viewControllers.isEmpty {
+            router.navigationController.pushViewController(primaryViewController, animated: true)
+        } else {
+            router.navigationController.viewControllers.removeAll()
+            router.navigationController.pushViewController(primaryViewController, animated: true)
+        }
     }
 }

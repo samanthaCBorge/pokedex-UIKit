@@ -11,9 +11,11 @@ import UIKit
 
 protocol PokemonListViewModelRepresentable {
     func loadData()
-//    func didTapItem(model: Pokemon)
+    func didTapItem(model: Pokemon)
+    func saveTeam(title: String)
     var pokemonListSubject: PassthroughSubject<[PokemonEntry], Failure> { get }
-//    var selectedPokemons: [Pokemon] { get set }
+    var selectedPokemons: [Pokemon] { get set }
+    var currentMode: Mode { get set }
 }
 
 final class PokemonListViewModel<R: AppRouter> {
@@ -24,6 +26,7 @@ final class PokemonListViewModel<R: AppRouter> {
     private let store: PokemonListStore
     private let pokedex: Pokedex
     private var region = ""
+    var currentMode: Mode = .notTeam
     var selectedPokemons = [Pokemon]()
     
     init(pokedex: Pokedex, store: PokemonListStore = APIManager()) {
@@ -34,9 +37,19 @@ final class PokemonListViewModel<R: AppRouter> {
 
 extension PokemonListViewModel: PokemonListViewModelRepresentable {
     
-//    func didTapItem(model: Pokemon) {
-////        router?.process(route: .showPokemonDetail(model: model))
-//    }
+    func saveTeam(title: String) {
+        let userId = Auth.auth().currentUser!.uid
+        let id = UUID().uuidString
+        let team = Team(identifier: id, title: title, region: region, pokemons: selectedPokemons)
+        
+        store.saveTeam(userId: userId, model: team)
+            .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+            .store(in: &cancellables)
+    }
+    
+    func didTapItem(model: Pokemon) {
+//        router?.process(route: .showPokemonDetail(model: model))
+    }
     
     func loadData() {
         let recieved = { (response: PokemonResponse) -> Void in

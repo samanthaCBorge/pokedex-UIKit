@@ -21,7 +21,7 @@ final class HomeViewController: UICollectionViewController {
     private let viewModel: HomeViewModelRepresentable
     
     private lazy var cancelButtonItem: UIBarButtonItem = {
-        let buttonItem = UIBarButtonItem(title: "Cancel", primaryAction: UIAction { [unowned self] _ in
+        let buttonItem = UIBarButtonItem(title: "LogOut", primaryAction: UIAction { [unowned self] _ in
             viewModel.exit()
         })
         buttonItem.tintColor = .red

@@ -38,6 +38,10 @@
 		CECC75E02974E11C00A77A30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC75DF2974E11C00A77A30 /* AppDelegate.swift */; };
 		CECC75E92974E11C00A77A30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECC75E82974E11C00A77A30 /* Assets.xcassets */; };
 		CECC75EC2974E11C00A77A30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECC75EA2974E11C00A77A30 /* LaunchScreen.storyboard */; };
+		CECF31F12A24F5C400131DF0 /* PokemonViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECF31F02A24F5C400131DF0 /* PokemonViewCell.xib */; };
+		CECF31F32A24F5D500131DF0 /* PokemonViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF31F22A24F5D500131DF0 /* PokemonViewCell.swift */; };
+		CECF31F52A24FB5E00131DF0 /* UICollectionView+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECF31F42A24FB5E00131DF0 /* UICollectionView+ReusableView.swift */; };
+		CECF31F72A253A7000131DF0 /* PokemonListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CECF31F62A253A7000131DF0 /* PokemonListViewController.xib */; };
 		CED9E2612A2120A000B27DE5 /* LogInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9E2602A2120A000B27DE5 /* LogInCoordinator.swift */; };
 		CED9E2632A21211500B27DE5 /* LogInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9E2622A21211500B27DE5 /* LogInViewModel.swift */; };
 		CED9E2652A2121B400B27DE5 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED9E2642A2121B400B27DE5 /* UserDefaultsManager.swift */; };
@@ -102,6 +106,10 @@
 		CECC75ED2974E11C00A77A30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CECC75F22974E11D00A77A30 /* poke-testTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "poke-testTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECC75FC2974E11D00A77A30 /* poke-testUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "poke-testUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CECF31F02A24F5C400131DF0 /* PokemonViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonViewCell.xib; sourceTree = "<group>"; };
+		CECF31F22A24F5D500131DF0 /* PokemonViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewCell.swift; sourceTree = "<group>"; };
+		CECF31F42A24FB5E00131DF0 /* UICollectionView+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ReusableView.swift"; sourceTree = "<group>"; };
+		CECF31F62A253A7000131DF0 /* PokemonListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonListViewController.xib; sourceTree = "<group>"; };
 		CED9E2602A2120A000B27DE5 /* LogInCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInCoordinator.swift; sourceTree = "<group>"; };
 		CED9E2622A21211500B27DE5 /* LogInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewModel.swift; sourceTree = "<group>"; };
 		CED9E2642A2121B400B27DE5 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -210,6 +218,7 @@
 			children = (
 				CE4FB2342A21096E00312F6C /* Cell */,
 				CE4FB2352A210B5300312F6C /* PokemonListViewController.swift */,
+				CECF31F62A253A7000131DF0 /* PokemonListViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,6 +243,8 @@
 		CE4FB2342A21096E00312F6C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				CECF31F02A24F5C400131DF0 /* PokemonViewCell.xib */,
+				CECF31F22A24F5D500131DF0 /* PokemonViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -316,6 +327,7 @@
 				CE8A40C42A1C02D50027FE90 /* UIAlertController+Builder.swift */,
 				CE8A40C82A1C03510027FE90 /* UICollectionViewController.swift */,
 				CEF907842A1FFE7600C346F4 /* UIViewController.swift */,
+				CECF31F42A24FB5E00131DF0 /* UICollectionView+ReusableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -559,6 +571,8 @@
 			files = (
 				CE4FB2432A21180A00312F6C /* LogInViewController.xib in Resources */,
 				CECC75EC2974E11C00A77A30 /* LaunchScreen.storyboard in Resources */,
+				CECF31F12A24F5C400131DF0 /* PokemonViewCell.xib in Resources */,
+				CECF31F72A253A7000131DF0 /* PokemonListViewController.xib in Resources */,
 				CE4FB23D2A21162500312F6C /* GoogleService-Info.plist in Resources */,
 				CECC75E92974E11C00A77A30 /* Assets.xcassets in Resources */,
 				CE8C94242A1EAEC200193F5C /* PokemonGB.ttf in Resources */,
@@ -590,6 +604,7 @@
 				CEF9078D2A2004B200C346F4 /* WelcomeViewModel.swift in Sources */,
 				CED9E2652A2121B400B27DE5 /* UserDefaultsManager.swift in Sources */,
 				CE3E3E322A1FB284006B8097 /* Pokedex.swift in Sources */,
+				CECF31F52A24FB5E00131DF0 /* UICollectionView+ReusableView.swift in Sources */,
 				CEEFB7FB29AE4AA800DFE86B /* Coordinator.swift in Sources */,
 				CE4FB2312A21064F00312F6C /* PokemonResponse.swift in Sources */,
 				CEF907832A1FEB1000C346F4 /* PokedexListCoordinator.swift in Sources */,
@@ -610,6 +625,7 @@
 				CEEFB80229AE4B9E00DFE86B /* Router.swift in Sources */,
 				CEF907852A1FFE7600C346F4 /* UIViewController.swift in Sources */,
 				CEF907812A1FEADF00C346F4 /* PokedexListViewController.swift in Sources */,
+				CECF31F32A24F5D500131DF0 /* PokemonViewCell.swift in Sources */,
 				CE8A40C92A1C03510027FE90 /* UICollectionViewController.swift in Sources */,
 				CEEFB7FE29AE4AE200DFE86B /* App.swift in Sources */,
 				CE4FB2332A21067000312F6C /* Pokemon.swift in Sources */,

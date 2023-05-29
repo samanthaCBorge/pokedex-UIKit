@@ -20,6 +20,7 @@ protocol PokedexListStore {
 
 protocol PokemonListStore {
     func readPokemons(pokedex: Pokedex) -> Future<PokemonResponse, Failure>
+    func saveTeam(userId: String, model: Team) -> Future<Bool, Failure>
 }
 
 protocol PokemonDetailStore {
@@ -78,6 +79,19 @@ extension APIManager: PokedexListStore {
     func readPokedex(region: Region) -> Future<PokedexResponse, Failure> {
         return request(for: region.url)
     }
+    
+    func saveTeam(userId: String, model: Team) -> Future<Bool, Failure> {
+        return Future { [unowned self] promise in
+            do {
+                let data = try FirebaseEncoder().encode(model)
+                database.child(userId).child("teams").child(model.identifier).setValue(data)
+                promise(.success(true))
+            } catch {
+                promise(.failure(.APIError(error)))
+            }
+        }
+    }
+    
 }
 
 extension APIManager: PokemonListStore {
@@ -93,3 +107,33 @@ extension APIManager: PokemonDetailStore {
 //    }
 }
 
+struct Team: Codable, Identifiable {
+    let id = UUID().uuidString
+    var identifier: String
+    var title: String
+    var region: String
+    var pokemons: [Pokemon]
+    
+    enum CodingKeys: String, CodingKey {
+        case identifier
+        case title
+        case region
+        case pokemons
+    }
+}
+
+extension Team: Hashable {
+    static func == (lhs: Team, rhs: Team) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        return hasher.combine(id)
+    }
+}
+
+extension Team: Comparable {
+    static func <(lhs: Team, rhs: Team) -> Bool {
+        lhs.title < rhs.title
+    }
+}

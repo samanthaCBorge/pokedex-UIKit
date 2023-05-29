@@ -8,7 +8,17 @@
 import Combine
 import UIKit
 
-final class PokemonListViewController: UICollectionViewController {
+enum Mode {
+    case addingTeam
+    case notTeam
+}
+
+final class PokemonListViewController: UIViewController {
+    
+    @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet private var addTeamButton: UIButton!
+    @IBOutlet private var doneButton: UIButton!
+    @IBOutlet private var cancelButton: UIButton!
     
     private enum Section: CaseIterable {
         case main
@@ -17,12 +27,12 @@ final class PokemonListViewController: UICollectionViewController {
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, PokemonEntry>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, PokemonEntry>
     
-    private var subscription: AnyCancellable?
     private var viewModel: PokemonListViewModelRepresentable
+    private var subscription: AnyCancellable?
     
     init(viewModel: PokemonListViewModelRepresentable) {
         self.viewModel = viewModel
-        super.init(collectionViewLayout: Self.generateLayout())
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -35,10 +45,20 @@ final class PokemonListViewController: UICollectionViewController {
         bindUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.loadData()
+    }
+    
     private func setUI() {
         setTitle("Pokémon", andImage: UIImage(named: "pokemon")!)
-        safeAreaLayoutGuideAtSafe()
+        collectionView.delegate = self
+        collectionView.register(PokemonViewCell.self)
+        collectionView.collectionViewLayout = generateLayout()
+        doneButton.isHidden = true
+        cancelButton.isHidden = true
         viewModel.loadData()
+        applySnapshot(pokemonEntrys: [])
     }
     
     private func bindUI() {
@@ -53,21 +73,76 @@ final class PokemonListViewController: UICollectionViewController {
             applySnapshot(pokemonEntrys: pokemonEntrys)
         }
     }
-
-    private let registerPokemonCell = UICollectionView.CellRegistration<UICollectionViewListCell, Pokemon> { cell, indexPath, pokemon in
-        var configuration = cell.defaultContentConfiguration()
-        configuration.text = pokemon.name
-        configuration.textProperties.font = UIFont(name: "PokemonGB", size: 18) ?? UIFont.systemFont(ofSize: 18)
-        
-        cell.accessories = [.disclosureIndicator()]
-        cell.contentConfiguration = configuration
+    
+    private func tapAddTeamButton() {
+        viewModel.currentMode = .addingTeam
+        addTeamButton.isHidden = true
+        doneButton.isHidden = false
+        cancelButton.isHidden = false
+        reloadData()
+    }
+    
+    private func tapDoneButton() {
+        addNameTeam()
+    }
+    
+    private func finishAddingTeam() {
+        viewModel.currentMode = .notTeam
+        viewModel.selectedPokemons.removeAll()
+        addTeamButton.isHidden = false
+        doneButton.isHidden = true
+        cancelButton.isHidden = true
+        reloadData()
+    }
+    
+    private func addNameTeam() {
+        if viewModel.selectedPokemons.count >= 3 && viewModel.selectedPokemons.count <= 5 {
+            UIAlertController.Builder()
+                .withTitle("Add Team Title")
+                .withTextField(true)
+                .withButton(style: .destructive, title: "Cancel")
+                .withButton(title: "Save team") { [unowned self] alert in
+                    guard let title = alert.textFields?.first?.text,
+                          !title.isEmpty else {
+                        presentAlert(with: "Title cannot be empty")
+                        return
+                    }
+                    viewModel.saveTeam(title: title)
+                    
+                    finishAddingTeam()
+                }
+                .present(in: self)
+        } else {
+            presentAlert(with: "The team must contain 3 to 5 pokemons")
+        }
+    }
+    
+    
+    @IBAction func didTapAddTeam(_ sender: Any) {
+        tapAddTeamButton()
+    }
+    
+    @IBAction func didTapDone(_ sender: Any) {
+        tapDoneButton()
+    }
+    
+    @IBAction func didTapCancel(_ sender: Any) {
+        finishAddingTeam()
     }
     
     // MARK: Diffable data source
     
     private lazy var dataSource: DataSource = {
         let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, item -> UICollectionViewCell in
-            collectionView.dequeueConfiguredReusableCell(using: self.registerPokemonCell, for: indexPath, item: item.pokemon)
+            let cell: PokemonViewCell = collectionView.dequeueCell(for: indexPath)
+            
+            var isSelected = self.viewModel.selectedPokemons.contains(where: { $0.name == item.pokemon.name })
+            
+            cell.performSelected(isSelected, for: self.viewModel.currentMode)
+            cell.configure(item.pokemon)
+            cell.contentView.backgroundColor = .white
+            
+            return cell
         }
         return dataSource
     }()
@@ -85,15 +160,30 @@ final class PokemonListViewController: UICollectionViewController {
         }
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+}
+
+extension PokemonListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let pokemon = dataSource.itemIdentifier(for: indexPath) else { return }
         
+        switch viewModel.currentMode {
+        case .addingTeam:
+            if let index = viewModel.selectedPokemons.firstIndex(where: { $0.name == pokemon.pokemon.name }) {
+                viewModel.selectedPokemons.remove(at: index)
+            } else if viewModel.selectedPokemons.count <= 5 {
+                viewModel.selectedPokemons.append(pokemon.pokemon)
+            }
+            reloadData()
+        case .notTeam:
+            viewModel.didTapItem(model: pokemon.pokemon)
+        }
     }
 }
 
+
 extension PokemonListViewController {
-    static private func generateLayout() -> UICollectionViewCompositionalLayout {
-        let listConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+    private func generateLayout() -> UICollectionViewCompositionalLayout {
+        let listConfig = UICollectionLayoutListConfiguration(appearance: .sidebarPlain)
         return UICollectionViewCompositionalLayout.list(using: listConfig)
     }
 }
