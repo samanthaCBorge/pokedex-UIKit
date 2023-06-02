@@ -23,8 +23,8 @@ protocol PokemonListStore {
     func saveTeam(userId: String, model: Team) -> Future<Bool, Failure>
 }
 
-protocol PokemonDetailStore {
-//    func readPokemonDetails(pokemon: Pokemon) -> Future<PokemonDetailBase, Failure>
+protocol PokemonInfoStore {
+    func readPokemonInfo(pokemon: Pokemon) -> Future<PokemonInfo, Failure>
 }
 
 final class APIManager {
@@ -75,6 +75,13 @@ extension APIManager: HomeListStore {
     }
 }
 
+extension APIManager: PokemonInfoStore {
+    func readPokemonInfo(pokemon: Pokemon) -> Future<PokemonInfo, Failure> {
+        let url = "https://pokeapi.co/api/v2/pokemon/\(pokemon.name)"
+        return request(for: url)
+    }
+}
+
 extension APIManager: PokedexListStore {
     func readPokedex(region: Region) -> Future<PokedexResponse, Failure> {
         return request(for: region.url)
@@ -98,13 +105,6 @@ extension APIManager: PokemonListStore {
     func readPokemons(pokedex: Pokedex) -> Future<PokemonResponse, Failure> {
         return request(for: pokedex.url)
     }
-}
-
-
-extension APIManager: PokemonDetailStore {
-//    func readPokemonDetails(pokemon: Pokemon) -> Future<PokemonDetailBase, Failure> {
-//        return request(for: pokemon.url)
-//    }
 }
 
 struct Team: Codable, Identifiable {

@@ -48,7 +48,7 @@ extension PokemonListViewModel: PokemonListViewModelRepresentable {
     }
     
     func didTapItem(model: Pokemon) {
-//        router?.process(route: .showPokemonDetail(model: model))
+        router?.process(route: .showPokemon(model: model))
     }
     
     func loadData() {

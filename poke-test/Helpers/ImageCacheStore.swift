@@ -9,7 +9,7 @@ import UIKit
 
 final class ImageCacheStore {
     
-    private let placeHolder = #imageLiteral(resourceName: "PlaceHolderImage")
+    private let placeHolder = #imageLiteral(resourceName: "pokeIcon")
     private let cache = NSCache<NSString, UIImage>()
     private let utilityQueue = DispatchQueue.global(qos: .utility)
     static let shared = ImageCacheStore()

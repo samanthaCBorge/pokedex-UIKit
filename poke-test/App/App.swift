@@ -18,7 +18,7 @@ extension App: Coordinator {
         var isSession: Bool {
             !UserDefaultsManager.shared.provider.isEmpty
         }
-        process(route:  isSession ? .showHome : .showLogin)
+        process(route:  .showHome)
     }
 } 
 

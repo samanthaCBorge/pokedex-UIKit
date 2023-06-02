@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="StatsView" customModule="poke_test" customModuleProvider="target">
+            <connections>
+                <outlet property="containerView" destination="ZVW-PI-blZ" id="RPB-1R-HH4"/>
+                <outlet property="nameStat" destination="gCt-KD-BUV" id="iVC-Ji-Is3"/>
+                <outlet property="progressBar" destination="QNy-N6-5ej" id="1V2-Lj-Hvg"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="gtZ-XK-jxH">
+            <rect key="frame" x="0.0" y="0.0" width="315" height="75"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVW-PI-blZ">
+                    <rect key="frame" x="0.0" y="0.0" width="315" height="75"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3QX-De-b2o">
+                            <rect key="frame" x="8" y="27.666666666666671" width="299" height="20"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCt-KD-BUV">
+                                    <rect key="frame" x="0.0" y="0.0" width="139.66666666666666" height="20"/>
+                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dVW-Ao-glx">
+                                    <rect key="frame" x="159.66666666666663" y="0.0" width="139.33333333333337" height="20"/>
+                                    <subviews>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="QNy-N6-5ej">
+                                            <rect key="frame" x="0.0" y="0.0" width="139.33333333333334" height="20"/>
+                                        </progressView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="QNy-N6-5ej" firstAttribute="centerY" secondItem="dVW-Ao-glx" secondAttribute="centerY" id="NIG-a6-LrN"/>
+                                        <constraint firstItem="QNy-N6-5ej" firstAttribute="centerX" secondItem="dVW-Ao-glx" secondAttribute="centerX" id="PxS-je-Q6I"/>
+                                        <constraint firstAttribute="trailing" secondItem="QNy-N6-5ej" secondAttribute="trailing" id="dLq-P3-ao6"/>
+                                        <constraint firstItem="QNy-N6-5ej" firstAttribute="top" secondItem="dVW-Ao-glx" secondAttribute="top" id="djp-8f-z7U"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="MDn-aW-5Kj"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="3QX-De-b2o" firstAttribute="leading" secondItem="ZVW-PI-blZ" secondAttribute="leading" constant="8" id="BmT-y5-3RX"/>
+                        <constraint firstAttribute="trailing" secondItem="3QX-De-b2o" secondAttribute="trailing" constant="8" id="P3q-KY-8cJ"/>
+                        <constraint firstItem="3QX-De-b2o" firstAttribute="centerX" secondItem="ZVW-PI-blZ" secondAttribute="centerX" id="gE4-mN-WcN"/>
+                        <constraint firstItem="3QX-De-b2o" firstAttribute="centerY" secondItem="ZVW-PI-blZ" secondAttribute="centerY" id="ymE-3G-6h8"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="Wvk-ND-mpr"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ZVW-PI-blZ" secondAttribute="trailing" id="DNQ-VJ-EvA"/>
+                <constraint firstItem="ZVW-PI-blZ" firstAttribute="leading" secondItem="gtZ-XK-jxH" secondAttribute="leading" id="Dns-pM-Qtg"/>
+                <constraint firstAttribute="bottom" secondItem="ZVW-PI-blZ" secondAttribute="bottom" id="d6T-1d-Hru"/>
+                <constraint firstItem="ZVW-PI-blZ" firstAttribute="top" secondItem="gtZ-XK-jxH" secondAttribute="top" id="nry-Hb-3vg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-20.610687022900763" y="-263.02816901408454"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

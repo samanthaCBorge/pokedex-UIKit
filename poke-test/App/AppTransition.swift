@@ -14,6 +14,7 @@ enum AppTransition {
     case showHome
     case showPokedex(model: Region)
     case showPokemons(model: Pokedex)
+    case showPokemon(model: Pokemon)
     
     var hasState: Bool {
         false
@@ -26,6 +27,7 @@ enum AppTransition {
         case .showHome: return HomeCoordinator(router: router)
         case .showPokedex(let model): return PokedexListCoordinator(model: model, router: router)
         case .showPokemons(let model): return PokemonListCoordinator(model: model, router: router)
+        case .showPokemon(let model): return PokemonInfoCoordinator(model: model, router: router)
         }
     }
 }
@@ -39,6 +41,7 @@ extension AppTransition: Hashable {
         case .showHome: return "showHome"
         case .showPokedex: return "showPokedex"
         case .showPokemons: return "showPokemon"
+        case .showPokemon: return "showPokemon"
         }
     }
     
