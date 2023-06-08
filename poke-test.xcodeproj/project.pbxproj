@@ -35,6 +35,7 @@
 		CE8A40C92A1C03510027FE90 /* UICollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8A40C82A1C03510027FE90 /* UICollectionViewController.swift */; };
 		CE8C94222A1E9C9D00193F5C /* ImageCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C94212A1E9C9D00193F5C /* ImageCacheStore.swift */; };
 		CE8C94242A1EAEC200193F5C /* PokemonGB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8C94232A1EAD0800193F5C /* PokemonGB.ttf */; };
+		CEADD9062A322B8B00524572 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADD9052A322B8B00524572 /* UIView.swift */; };
 		CECC75E02974E11C00A77A30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC75DF2974E11C00A77A30 /* AppDelegate.swift */; };
 		CECC75E92974E11C00A77A30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECC75E82974E11C00A77A30 /* Assets.xcassets */; };
 		CECC75EC2974E11C00A77A30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECC75EA2974E11C00A77A30 /* LaunchScreen.storyboard */; };
@@ -111,6 +112,7 @@
 		CE8A40C82A1C03510027FE90 /* UICollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewController.swift; sourceTree = "<group>"; };
 		CE8C94212A1E9C9D00193F5C /* ImageCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheStore.swift; sourceTree = "<group>"; };
 		CE8C94232A1EAD0800193F5C /* PokemonGB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PokemonGB.ttf; sourceTree = "<group>"; };
+		CEADD9052A322B8B00524572 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		CECC75DC2974E11C00A77A30 /* poke-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "poke-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECC75DF2974E11C00A77A30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECC75E82974E11C00A77A30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -354,6 +356,7 @@
 				CE8A40C82A1C03510027FE90 /* UICollectionViewController.swift */,
 				CEF907842A1FFE7600C346F4 /* UIViewController.swift */,
 				CECF31F42A24FB5E00131DF0 /* UICollectionView+ReusableView.swift */,
+				CEADD9052A322B8B00524572 /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				CE3E3E342A1FB2BB006B8097 /* PokedexResponse.swift in Sources */,
 				CED485412A2651E000428178 /* PokemonInfoViewModel.swift in Sources */,
 				CED485392A264B4A00428178 /* PokemonInfo.swift in Sources */,
+				CEADD9062A322B8B00524572 /* UIView.swift in Sources */,
 				CE8A40BC2A1BFC160027FE90 /* RegionResponse.swift in Sources */,
 				CE8A40BA2A1BFC0D0027FE90 /* Region.swift in Sources */,
 				CED4853F2A264F3300428178 /* Language.swift in Sources */,
@@ -881,6 +885,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A5BJ42CV8K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "poke-test/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -908,6 +913,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = A5BJ42CV8K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "poke-test/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

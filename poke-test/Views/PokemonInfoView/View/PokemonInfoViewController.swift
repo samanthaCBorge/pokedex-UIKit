@@ -22,9 +22,11 @@ final class PokemonInfoViewController: UIViewController {
     
     @IBOutlet private var weight: UILabel!
     
+    @IBOutlet private var scrollView: UIScrollView!
     
-    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet private var backgroundView: UIView!
     
+    @IBOutlet weak var typeView: UIView!
     private var subscription: AnyCancellable?
     private let viewModel: PokemonInfoViewModelRepresentable
     
@@ -41,16 +43,40 @@ final class PokemonInfoViewController: UIViewController {
         super.viewDidLoad()
         setUI()
         bindUI()
+        
+        let appearance = UINavigationBarAppearance()
+           appearance.configureWithTransparentBackground()
+           
+           self.navigationItem.standardAppearance = appearance
+           self.navigationItem.scrollEdgeAppearance = appearance
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        scrollView.layer.masksToBounds = false
+        scrollView.layer.cornerRadius = 30
+        scrollView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
+
+        
+        imageView.layer.masksToBounds = false
+        imageView.layer.cornerRadius = 10
+        imageView.layer.shadowColor = UIColor.black.cgColor
+        imageView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        imageView.layer.shadowOpacity = 0.9
+        imageView.layer.shadowRadius = 10
     }
     
     private func setUI() {
         viewModel.loadData()
         nameLabel.font = UIFont(name: "Pokemon Solid", size: 28) ?? UIFont.systemFont(ofSize: 18)
-        typeLabel.layer.borderWidth = 1.0
-        typeLabel.layer.cornerRadius = 12
-        typeLabel.backgroundColor = UIColor.gray
-        typeLabel.layer.masksToBounds = true
-        
+        nameLabel.setCharacterSpacing(5.0)
+        typeView.layer.cornerRadius = 20
+        typeView.clipsToBounds = true
+        typeView.layer.shadowRadius = 6
+        typeView.layer.shadowOpacity = 1.0
+        typeView.layer.shadowOffset = CGSize(width: 3, height: 0)
+        typeView.layer.shadowColor = UIColor.gray.cgColor
+        typeView.layer.masksToBounds = false
     }
     
     private func bindUI() {
@@ -65,36 +91,26 @@ final class PokemonInfoViewController: UIViewController {
             setPokemonInfo(pokemonInfo)
         }
     }
-    
+
     private func setPokemonInfo(_ pokemon: PokemonInfo?) {
         guard let pokemon = pokemon else { return }
         nameLabel.text = pokemon.name
         typeLabel.text = pokemon.types.first?.type.name
         height.text = "\(pokemon.height)"
         weight.text = "\(pokemon.weight)"
-    
         
-        var backgroundColor: UIColor {
-            switch pokemon.types.first?.type.name {
-            case "fire": return .systemRed
-            case "poison", "bug": return .systemGreen
-            case "water": return .systemTeal
-            case "electric": return .systemYellow
-            case "psychic": return .systemPurple
-            case "normal": return .systemOrange
-            case "ground": return .systemGray
-            case "flying": return .systemBlue
-            case "fairy": return .systemPink
-            default: return .systemIndigo
-            }
-        }
+        typeView.backgroundColor = viewModel.colorBackground(pokemon)
+        self.backgroundView.applyGradient(colours: [.white.withAlphaComponent(0.8),viewModel.colorBackground(pokemon), .black.withAlphaComponent(0.4)])
+        backgroundView.backgroundColor = viewModel.colorBackground(pokemon)
         
-        backgroundView.backgroundColor = backgroundColor
+        height.textColor = viewModel.colorBackground(pokemon)
+        weight.textColor = viewModel.colorBackground(pokemon)
 
         pokemon.stats.forEach { item in
             let view = StatsView()
             view.translatesAutoresizingMaskIntoConstraints = false
             view.heightAnchor.constraint(equalToConstant: 20).isActive = true
+            view.progressBar.tintColor = viewModel.colorBackground(pokemon)
             view.config(pokemon: item)
 
             DispatchQueue.main.async { [unowned self] in
@@ -110,6 +126,19 @@ final class PokemonInfoViewController: UIViewController {
 }
 
 
+extension UILabel{
+    func setCharacterSpacing(_ spacing: CGFloat){
+        let attributedStr = NSMutableAttributedString(string: self.text ?? "")
+        attributedStr.addAttribute(NSAttributedString.Key.kern, value: spacing, range: NSMakeRange(0, attributedStr.length))
+        self.attributedText = attributedStr
+    }
+}
 
-
-
+extension UIView {
+    func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+         let mask = CAShapeLayer()
+         mask.path = path.cgPath
+         self.layer.mask = mask
+    }
+}

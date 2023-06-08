@@ -10,6 +10,8 @@ import Combine
 
 protocol PokemonInfoViewModelRepresentable {
     var pokemonInfoSubject: CurrentValueSubject<PokemonInfo?, Failure> { get }
+    func colorBackground(_ pokemon: PokemonInfo) -> UIColor
+    var pokemonInfo: PokemonInfo? { get }
     func loadData()
 }
 
@@ -20,6 +22,7 @@ final class PokemonInfoViewModel<R: AppRouter> {
     private var cancellables = Set<AnyCancellable>()
     private let store: PokemonInfoStore
     private let pokemon: Pokemon
+    @Published var pokemonInfo: PokemonInfo?
     
     init(pokemon: Pokemon, store: PokemonInfoStore = APIManager()) {
         self.store = store
@@ -28,6 +31,35 @@ final class PokemonInfoViewModel<R: AppRouter> {
 }
 
 extension PokemonInfoViewModel: PokemonInfoViewModelRepresentable {
+    
+    func colorBackground(_ pokemon: PokemonInfo) -> UIColor {
+        var backgroundColor: UIColor {
+            switch pokemon.types.first?.type.name {
+            case "fire":
+                return .red
+            case "poison", "bug":
+                return .systemGreen
+            case "water":
+                return .systemTeal
+            case "electric":
+                return .systemYellow
+            case "psychic":
+                return .systemPurple
+            case "normal":
+                return .systemOrange
+            case "ground":
+                return .systemGray
+            case "flying":
+                return .systemBlue
+            case "fairy":
+                return .systemPink
+            default:
+                return .systemIndigo
+            }
+        }
+        return backgroundColor
+    }
+    
     func loadData() {
         let recieved = { (response: PokemonInfo) -> Void in
             DispatchQueue.main.async { [unowned self] in
