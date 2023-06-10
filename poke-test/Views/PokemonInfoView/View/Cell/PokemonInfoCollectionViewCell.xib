@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Sofia Pro SemiBold.ttf">
+            <string>SofiaPro-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gog-eb-VK8" customClass="PokemonInfoCollectionViewCell" customModule="poke_test" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="270" height="55"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="270" height="55"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bby-jq-I3p">
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="55"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="SofiaPro-SemiBold" family="Sofia Pro" pointSize="24"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="a6x-wl-1GX"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Bby-jq-I3p" secondAttribute="bottom" id="Dpb-q4-GpF"/>
+                <constraint firstItem="Bby-jq-I3p" firstAttribute="leading" secondItem="gog-eb-VK8" secondAttribute="leading" id="KTD-JO-Qg5"/>
+                <constraint firstAttribute="trailing" secondItem="Bby-jq-I3p" secondAttribute="trailing" id="RPg-yk-8nN"/>
+                <constraint firstItem="Bby-jq-I3p" firstAttribute="top" secondItem="gog-eb-VK8" secondAttribute="top" id="pbc-BV-diF"/>
+            </constraints>
+            <size key="customSize" width="270" height="55"/>
+            <connections>
+                <outlet property="nameLabel" destination="Bby-jq-I3p" id="DGu-0C-ClE"/>
+            </connections>
+            <point key="canvasLocation" x="72" y="19"/>
+        </collectionViewCell>
+    </objects>
+</document>

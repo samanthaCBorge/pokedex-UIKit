@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final class PokemonInfoViewController: UIViewController {
+final class PokemonInfoViewController: UIViewController, UICollectionViewDelegate {
     
     @IBOutlet private var stackView: UIStackView!
     
@@ -26,7 +26,17 @@ final class PokemonInfoViewController: UIViewController {
     
     @IBOutlet private var backgroundView: UIView!
     
-    @IBOutlet weak var typeView: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var dataArray = [TypeElement]()
+    
+    private enum Section: CaseIterable {
+        case main
+    }
+
+    private typealias DataSource = UICollectionViewDiffableDataSource<Section, TypeElement>
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, TypeElement>
+    
     private var subscription: AnyCancellable?
     private let viewModel: PokemonInfoViewModelRepresentable
     
@@ -45,10 +55,10 @@ final class PokemonInfoViewController: UIViewController {
         bindUI()
         
         let appearance = UINavigationBarAppearance()
-           appearance.configureWithTransparentBackground()
-           
-           self.navigationItem.standardAppearance = appearance
-           self.navigationItem.scrollEdgeAppearance = appearance
+        appearance.configureWithTransparentBackground()
+        
+        self.navigationItem.standardAppearance = appearance
+        self.navigationItem.scrollEdgeAppearance = appearance
     }
 
     override func viewWillLayoutSubviews() {
@@ -67,16 +77,14 @@ final class PokemonInfoViewController: UIViewController {
     }
     
     private func setUI() {
+        collectionView.delegate = self
+        collectionView.register(PokemonInfoCollectionViewCell.self)
+        collectionView.collectionViewLayout = generateLayout()
+      
+        
         viewModel.loadData()
         nameLabel.font = UIFont(name: "Pokemon Solid", size: 28) ?? UIFont.systemFont(ofSize: 18)
         nameLabel.setCharacterSpacing(5.0)
-        typeView.layer.cornerRadius = 20
-        typeView.clipsToBounds = true
-        typeView.layer.shadowRadius = 6
-        typeView.layer.shadowOpacity = 1.0
-        typeView.layer.shadowOffset = CGSize(width: 3, height: 0)
-        typeView.layer.shadowColor = UIColor.gray.cgColor
-        typeView.layer.masksToBounds = false
     }
     
     private func bindUI() {
@@ -89,18 +97,17 @@ final class PokemonInfoViewController: UIViewController {
             }
         } receiveValue: { [unowned self] pokemonInfo in
             setPokemonInfo(pokemonInfo)
+            applySnapshot(pokemon: pokemonInfo?.types ?? [])
         }
     }
 
     private func setPokemonInfo(_ pokemon: PokemonInfo?) {
         guard let pokemon = pokemon else { return }
         nameLabel.text = pokemon.name
-        typeLabel.text = pokemon.types.first?.type.name
         height.text = "\(pokemon.height)"
         weight.text = "\(pokemon.weight)"
         
-        typeView.backgroundColor = viewModel.colorBackground(pokemon)
-        self.backgroundView.applyGradient(colours: [.white.withAlphaComponent(0.8),viewModel.colorBackground(pokemon), .black.withAlphaComponent(0.4)])
+        backgroundView.applyGradient(colours: [.white.withAlphaComponent(0.8),viewModel.colorBackground(pokemon), .black.withAlphaComponent(0.4)])
         backgroundView.backgroundColor = viewModel.colorBackground(pokemon)
         
         height.textColor = viewModel.colorBackground(pokemon)
@@ -122,6 +129,50 @@ final class PokemonInfoViewController: UIViewController {
             let imageURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemon.id).png"
             imageView.image = await ImageCacheStore.shared.getCacheImage(for: imageURL)
         }
+    }
+    
+    // MARK: Diffable data source
+
+    private lazy var dataSource: DataSource = {
+        let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, item -> UICollectionViewCell in
+            let cell: PokemonInfoCollectionViewCell = collectionView.dequeueCell(for: indexPath)
+
+            cell.configCell(item)
+
+            cell.layer.cornerRadius = 20
+            cell.clipsToBounds = true
+            cell.layer.shadowRadius = 4
+            cell.layer.shadowOpacity = 1.0
+            cell.layer.shadowOffset = CGSize(width: 0, height: 2)
+            cell.layer.shadowColor = UIColor.gray.cgColor
+            cell.layer.masksToBounds = false
+            return cell
+        }
+        return dataSource
+    }()
+    
+    private func applySnapshot(pokemon: [TypeElement]) {
+        var snapshot = Snapshot()
+        snapshot.appendSections(Section.allCases)
+        Section.allCases.forEach { snapshot.appendItems(pokemon, toSection: $0) }
+        dataSource.apply(snapshot)
+    }
+    
+    private func generateLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2),
+                                              heightDimension: .fractionalHeight(1/2))
+        
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 5)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
+                                               heightDimension: .absolute(90))
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        let layoutConfig = UICollectionViewCompositionalLayout(section: section)
+        layoutConfig.collectionView?.backgroundColor = .white
+        return layoutConfig
     }
 }
 

@@ -12,6 +12,7 @@ protocol PokemonInfoViewModelRepresentable {
     var pokemonInfoSubject: CurrentValueSubject<PokemonInfo?, Failure> { get }
     func colorBackground(_ pokemon: PokemonInfo) -> UIColor
     var pokemonInfo: PokemonInfo? { get }
+    var types: TypeElement? { get }
     func loadData()
 }
 
@@ -23,6 +24,7 @@ final class PokemonInfoViewModel<R: AppRouter> {
     private let store: PokemonInfoStore
     private let pokemon: Pokemon
     @Published var pokemonInfo: PokemonInfo?
+    @Published var types: TypeElement?
     
     init(pokemon: Pokemon, store: PokemonInfoStore = APIManager()) {
         self.store = store

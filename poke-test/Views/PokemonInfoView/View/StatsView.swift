@@ -44,6 +44,4 @@ final class StatsView: UIView {
         let myFloat = Float(pokemon.baseStat)/100
         progressBar.progress = myFloat
     }
-    
-
 }
