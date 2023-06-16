@@ -33,7 +33,7 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
     private enum Section: CaseIterable {
         case main
     }
-
+    
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, TypeElement>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, TypeElement>
     
@@ -60,13 +60,13 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
         self.navigationItem.standardAppearance = appearance
         self.navigationItem.scrollEdgeAppearance = appearance
     }
-
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         scrollView.layer.masksToBounds = false
         scrollView.layer.cornerRadius = 30
         scrollView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
-
+        
         
         imageView.layer.masksToBounds = false
         imageView.layer.cornerRadius = 10
@@ -79,8 +79,7 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
     private func setUI() {
         collectionView.delegate = self
         collectionView.register(PokemonInfoCollectionViewCell.self)
-        collectionView.collectionViewLayout = generateLayout()
-      
+        //        collectionView.collectionViewLayout = generateLayout()
         
         viewModel.loadData()
         nameLabel.font = UIFont(name: "Pokemon Solid", size: 28) ?? UIFont.systemFont(ofSize: 18)
@@ -100,31 +99,30 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
             applySnapshot(pokemon: pokemonInfo?.types ?? [])
         }
     }
-
+    
     private func setPokemonInfo(_ pokemon: PokemonInfo?) {
         guard let pokemon = pokemon else { return }
         nameLabel.text = pokemon.name
         height.text = "\(pokemon.height)"
         weight.text = "\(pokemon.weight)"
         
-        backgroundView.applyGradient(colours: [.white.withAlphaComponent(0.8),viewModel.colorBackground(pokemon), .black.withAlphaComponent(0.4)])
-        backgroundView.backgroundColor = viewModel.colorBackground(pokemon)
+        backgroundView.applyGradient(colours: [.white.withAlphaComponent(0.8),viewModel.colorBackground(pokemon.types.first?.type.name ?? ""), .black.withAlphaComponent(0.4)])
+        backgroundView.backgroundColor = viewModel.colorBackground(pokemon.types.first?.type.name ?? "")
         
-        height.textColor = viewModel.colorBackground(pokemon)
-        weight.textColor = viewModel.colorBackground(pokemon)
-
+        height.textColor = viewModel.colorBackground(pokemon.types.first?.type.name ?? "")
+        weight.textColor = viewModel.colorBackground(pokemon.types.first?.type.name ?? "")
+        
         pokemon.stats.forEach { item in
             let view = StatsView()
             view.translatesAutoresizingMaskIntoConstraints = false
             view.heightAnchor.constraint(equalToConstant: 20).isActive = true
-            view.progressBar.tintColor = viewModel.colorBackground(pokemon)
+            view.progressBar.tintColor = viewModel.colorBackground(pokemon.types.first?.type.name ?? "")
             view.config(pokemon: item)
-
-            DispatchQueue.main.async { [unowned self] in
-                stackView.addArrangedSubview(view)
-            }
+            
+            stackView.addArrangedSubview(view)
+            
         }
-
+        
         Task {
             let imageURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemon.id).png"
             imageView.image = await ImageCacheStore.shared.getCacheImage(for: imageURL)
@@ -132,13 +130,14 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
     }
     
     // MARK: Diffable data source
-
+    
     private lazy var dataSource: DataSource = {
         let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, item -> UICollectionViewCell in
             let cell: PokemonInfoCollectionViewCell = collectionView.dequeueCell(for: indexPath)
-
+            
             cell.configCell(item)
-
+            
+            cell.backgroundColor = self.viewModel.colorBackground(item.type.name)
             cell.layer.cornerRadius = 20
             cell.clipsToBounds = true
             cell.layer.shadowRadius = 4
@@ -157,25 +156,26 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
         Section.allCases.forEach { snapshot.appendItems(pokemon, toSection: $0) }
         dataSource.apply(snapshot)
     }
-    
-    private func generateLayout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/2),
-                                              heightDimension: .fractionalHeight(1/2))
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 5, bottom: 5, trailing: 5)
-        
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1),
-                                               heightDimension: .absolute(90))
-        
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        let section = NSCollectionLayoutSection(group: group)
-        let layoutConfig = UICollectionViewCompositionalLayout(section: section)
-        layoutConfig.collectionView?.backgroundColor = .white
-        return layoutConfig
-    }
 }
 
+extension PokemonInfoViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+        let cellWidth: CGFloat = flowLayout.itemSize.width
+        let spaceBetweenCell: CGFloat = flowLayout.minimumInteritemSpacing
+        let numberOfItems = CGFloat(collectionView.numberOfItems(inSection: section))
+        var collectionWidth = collectionView.frame.size.width
+        
+        let totalWidth = cellWidth * numberOfItems
+        let totalSpacingWidth = spaceBetweenCell * (numberOfItems - 1)
+        let leftInset = (collectionView.frame.width - CGFloat(totalWidth + totalSpacingWidth)) / 2
+        let rightInset = leftInset
+        flowLayout.itemSize =  CGSize(width: 100, height: 50)
+        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
+    }
+}
 
 extension UILabel{
     func setCharacterSpacing(_ spacing: CGFloat){
@@ -187,9 +187,9 @@ extension UILabel{
 
 extension UIView {
     func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
-         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
-         let mask = CAShapeLayer()
-         mask.path = path.cgPath
-         self.layer.mask = mask
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
     }
 }
