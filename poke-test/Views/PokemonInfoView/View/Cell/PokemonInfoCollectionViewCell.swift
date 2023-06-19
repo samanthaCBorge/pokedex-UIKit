@@ -21,7 +21,7 @@ final class PokemonInfoCollectionViewCell: UICollectionViewCell, NibLoadable {
     
     func configCell(_ pokemon: TypeElement) {
         nameLabel.text = pokemon.type.name
-     
+        nameLabel.textColor = .white
     }
 }
 

@@ -39,6 +39,8 @@ final class PokedexListViewController: UICollectionViewController {
         setTitle("Pokédex", andImage: UIImage(named: "pokedex")!)
         safeAreaLayoutGuideAtSafe()
         viewModel.loadData()
+        
+        view.backgroundColor = .systemBackground
     }
     
     private func bindUI() {

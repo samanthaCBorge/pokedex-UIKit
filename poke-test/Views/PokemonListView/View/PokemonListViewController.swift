@@ -55,10 +55,12 @@ final class PokemonListViewController: UIViewController {
         collectionView.delegate = self
         collectionView.register(PokemonViewCell.self)
         collectionView.collectionViewLayout = generateLayout()
+        
         doneButton.isHidden = true
         cancelButton.isHidden = true
         viewModel.loadData()
         applySnapshot(pokemonEntrys: [])
+        view.backgroundColor = .systemBackground
     }
     
     private func bindUI() {
@@ -140,7 +142,7 @@ final class PokemonListViewController: UIViewController {
             
             cell.performSelected(isSelected, for: self.viewModel.currentMode)
             cell.configure(item.pokemon)
-            cell.contentView.backgroundColor = .white
+            cell.contentView.backgroundColor = UIColor(named: "backgroundCell")
             
             return cell
         }
@@ -183,7 +185,7 @@ extension PokemonListViewController: UICollectionViewDelegate {
 
 extension PokemonListViewController {
     private func generateLayout() -> UICollectionViewCompositionalLayout {
-        let listConfig = UICollectionLayoutListConfiguration(appearance: .sidebarPlain)
+        let listConfig = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         return UICollectionViewCompositionalLayout.list(using: listConfig)
     }
 }

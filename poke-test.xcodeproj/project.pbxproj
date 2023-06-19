@@ -38,6 +38,7 @@
 		CE8C94222A1E9C9D00193F5C /* ImageCacheStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8C94212A1E9C9D00193F5C /* ImageCacheStore.swift */; };
 		CE8C94242A1EAEC200193F5C /* PokemonGB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CE8C94232A1EAD0800193F5C /* PokemonGB.ttf */; };
 		CEADD9062A322B8B00524572 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEADD9052A322B8B00524572 /* UIView.swift */; };
+		CEB480822A40ED7E00B51D3F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEB480812A40ED7E00B51D3F /* Colors.xcassets */; };
 		CECC75E02974E11C00A77A30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECC75DF2974E11C00A77A30 /* AppDelegate.swift */; };
 		CECC75E92974E11C00A77A30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CECC75E82974E11C00A77A30 /* Assets.xcassets */; };
 		CECC75EC2974E11C00A77A30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CECC75EA2974E11C00A77A30 /* LaunchScreen.storyboard */; };
@@ -117,6 +118,7 @@
 		CE8C94212A1E9C9D00193F5C /* ImageCacheStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheStore.swift; sourceTree = "<group>"; };
 		CE8C94232A1EAD0800193F5C /* PokemonGB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PokemonGB.ttf; sourceTree = "<group>"; };
 		CEADD9052A322B8B00524572 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		CEB480812A40ED7E00B51D3F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		CECC75DC2974E11C00A77A30 /* poke-test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "poke-test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CECC75DF2974E11C00A77A30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CECC75E82974E11C00A77A30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 				CEEFB80429AE4C2D00DFE86B /* AppStyle.swift */,
 				CE8C94212A1E9C9D00193F5C /* ImageCacheStore.swift */,
 				CED9E2642A2121B400B27DE5 /* UserDefaultsManager.swift */,
+				CEB480812A40ED7E00B51D3F /* Colors.xcassets */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -501,11 +504,11 @@
 			isa = PBXGroup;
 			children = (
 				CED485322A26458B00428178 /* PokemonInfoView */,
-				CE4FB23E2A2117DE00312F6C /* LogInView */,
 				CE4FB2282A2103D800312F6C /* PokemonListView */,
-				CEF907862A20041A00C346F4 /* WelcomeView */,
 				CE3E3E2D2A1FB233006B8097 /* PokedexListView */,
 				CE8A40B82A1BFBFF0027FE90 /* HomeView */,
+				CE4FB23E2A2117DE00312F6C /* LogInView */,
+				CEF907862A20041A00C346F4 /* WelcomeView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -656,6 +659,7 @@
 			files = (
 				CE4FB2432A21180A00312F6C /* LogInViewController.xib in Resources */,
 				CEE4EF712A2A43180072A6EF /* Pokemon Solid.ttf in Resources */,
+				CEB480822A40ED7E00B51D3F /* Colors.xcassets in Resources */,
 				CE01E9292A33833C00CAF4C1 /* PokemonInfoCollectionViewCell.xib in Resources */,
 				CEE4EF6F2A2A36EB0072A6EF /* PokemonSolidNormal-xyWR.ttf in Resources */,
 				CECC75EC2974E11C00A77A30 /* LaunchScreen.storyboard in Resources */,

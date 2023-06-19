@@ -79,7 +79,6 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
     private func setUI() {
         collectionView.delegate = self
         collectionView.register(PokemonInfoCollectionViewCell.self)
-        //        collectionView.collectionViewLayout = generateLayout()
         
         viewModel.loadData()
         nameLabel.font = UIFont(name: "Pokemon Solid", size: 28) ?? UIFont.systemFont(ofSize: 18)
@@ -166,14 +165,13 @@ extension PokemonInfoViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth: CGFloat = flowLayout.itemSize.width
         let spaceBetweenCell: CGFloat = flowLayout.minimumInteritemSpacing
         let numberOfItems = CGFloat(collectionView.numberOfItems(inSection: section))
-        var collectionWidth = collectionView.frame.size.width
         
         let totalWidth = cellWidth * numberOfItems
         let totalSpacingWidth = spaceBetweenCell * (numberOfItems - 1)
         let leftInset = (collectionView.frame.width - CGFloat(totalWidth + totalSpacingWidth)) / 2
         let rightInset = leftInset
-        flowLayout.itemSize =  CGSize(width: 100, height: 50)
-        return UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
+        flowLayout.itemSize =  CGSize(width: 100, height: 46)
+        return UIEdgeInsets(top: 5, left: leftInset, bottom: 0, right: rightInset)
     }
 }
 
