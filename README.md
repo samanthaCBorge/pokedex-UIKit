@@ -10,7 +10,8 @@ MVVM separa la lógica de presentación (View) de la lógica de negocios (ViewMo
 * Cache de imagen.
 * URLSession para el manejo de api rest.
 * Persistencia de datos con Realtime Database de Firebase.
-* Manejo de errores
+* Manejo de errores.
+* Modo obscuro.
 
 # Intrucciones
 1. Clone o descargue este repositorio.
