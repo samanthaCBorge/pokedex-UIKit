@@ -8,6 +8,10 @@
 import UIKit
 import Combine
 
+enum TypePokemon: String {
+    case fire = "fire"
+}
+
 protocol PokemonInfoViewModelRepresentable {
     var pokemonInfoSubject: CurrentValueSubject<PokemonInfo?, Failure> { get }
     func colorBackground(_ pokemon: String) -> UIColor

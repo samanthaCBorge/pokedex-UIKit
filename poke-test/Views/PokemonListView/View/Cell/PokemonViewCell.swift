@@ -24,7 +24,6 @@ final class PokemonViewCell: UICollectionViewCell, NibLoadable {
     func configure(_ pokemon: Pokemon) {
         nameLabel.text = pokemon.name
         nameLabel.font = UIFont(name: "PokemonGB", size: 18) ?? UIFont.systemFont(ofSize: 18)
-        nameLabel.textColor = UIColor(named: "textCell")
     }
     
     func performSelected(_ isSelected: Bool, for mode: Mode) {

@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import ChameleonFramework
 
 final class PokemonInfoViewController: UIViewController, UICollectionViewDelegate {
     
@@ -26,7 +27,7 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
     
     @IBOutlet private var backgroundView: UIView!
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet private var collectionView: UICollectionView!
     
     var dataArray = [TypeElement]()
     
@@ -76,6 +77,10 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
         imageView.layer.shadowRadius = 10
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
     private func setUI() {
         collectionView.delegate = self
         collectionView.register(PokemonInfoCollectionViewCell.self)
@@ -105,26 +110,26 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
         height.text = "\(pokemon.height)"
         weight.text = "\(pokemon.weight)"
         
-        backgroundView.applyGradient(colours: [.white.withAlphaComponent(0.8),viewModel.colorBackground(pokemon.types.first?.type.name ?? ""), .black.withAlphaComponent(0.4)])
-        backgroundView.backgroundColor = viewModel.colorBackground(pokemon.types.first?.type.name ?? "")
-        
-        height.textColor = viewModel.colorBackground(pokemon.types.first?.type.name ?? "")
-        weight.textColor = viewModel.colorBackground(pokemon.types.first?.type.name ?? "")
-        
-        pokemon.stats.forEach { item in
-            let view = StatsView()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.heightAnchor.constraint(equalToConstant: 20).isActive = true
-            view.progressBar.tintColor = viewModel.colorBackground(pokemon.types.first?.type.name ?? "")
-            view.config(pokemon: item)
-            
-            stackView.addArrangedSubview(view)
-            
-        }
-        
         Task {
             let imageURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/\(pokemon.id).png"
             imageView.image = await ImageCacheStore.shared.getCacheImage(for: imageURL)
+            
+            if let myImage = imageView.image {
+                backgroundView.backgroundColor = UIColor(gradientStyle: .leftToRight, withFrame: backgroundView.frame, andColors: [pokemon.types.first?.type.color ?? .black, UIColor(averageColorFrom: myImage)])
+                
+                height.textColor = UIColor(averageColorFrom: myImage)
+                weight.textColor = UIColor(averageColorFrom: myImage)
+                
+                pokemon.stats.forEach { item in
+                    let view = StatsView()
+                    view.translatesAutoresizingMaskIntoConstraints = false
+                    view.heightAnchor.constraint(equalToConstant: 20).isActive = true
+                    view.progressBar.tintColor = UIColor(averageColorFrom: myImage)
+                    view.config(pokemon: item)
+                    
+                    stackView.addArrangedSubview(view)
+                }
+            }
         }
     }
     
@@ -136,13 +141,13 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
             
             cell.configCell(item)
             
-            cell.backgroundColor = self.viewModel.colorBackground(item.type.name)
+            cell.backgroundColor = item.type.color
             cell.layer.cornerRadius = 20
             cell.clipsToBounds = true
             cell.layer.shadowRadius = 4
             cell.layer.shadowOpacity = 1.0
-            cell.layer.shadowOffset = CGSize(width: 0, height: 2)
-            cell.layer.shadowColor = UIColor.gray.cgColor
+            cell.layer.shadowOffset = CGSize(width: 0, height: 1)
+            cell.layer.shadowColor = item.type.color.cgColor
             cell.layer.masksToBounds = false
             return cell
         }
@@ -170,7 +175,7 @@ extension PokemonInfoViewController: UICollectionViewDelegateFlowLayout {
         let totalSpacingWidth = spaceBetweenCell * (numberOfItems - 1)
         let leftInset = (collectionView.frame.width - CGFloat(totalWidth + totalSpacingWidth)) / 2
         let rightInset = leftInset
-        flowLayout.itemSize =  CGSize(width: 100, height: 46)
+        flowLayout.itemSize =  CGSize(width: 140, height: 46)
         return UIEdgeInsets(top: 5, left: leftInset, bottom: 0, right: rightInset)
     }
 }

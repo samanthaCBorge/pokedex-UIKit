@@ -161,7 +161,6 @@ final class PokemonListViewController: UIViewController {
             collectionView.reloadData()
         }
     }
-    
 }
 
 extension PokemonListViewController: UICollectionViewDelegate {
@@ -181,7 +180,6 @@ extension PokemonListViewController: UICollectionViewDelegate {
         }
     }
 }
-
 
 extension PokemonListViewController {
     private func generateLayout() -> UICollectionViewCompositionalLayout {

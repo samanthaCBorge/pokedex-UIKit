@@ -16,8 +16,8 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>PokemonGB.ttf</string>
-		<string>PokemonSolidNormal-xyWR.ttf</string>
 		<string>Pokemon Solid.ttf</string>
+		<string>Coco-Gothic-Bold-trial.ttf</string>
 	</array>
 </dict>
 </plist>

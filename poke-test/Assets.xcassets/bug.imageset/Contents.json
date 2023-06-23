@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "Pokemon_Type_Icon_Bug.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

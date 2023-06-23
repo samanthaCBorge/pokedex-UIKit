@@ -9,7 +9,8 @@ import UIKit
 
 final class PokemonInfoCollectionViewCell: UICollectionViewCell, NibLoadable {
 
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet private var nameLabel: UILabel!
+    @IBOutlet private var imageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,8 +21,11 @@ final class PokemonInfoCollectionViewCell: UICollectionViewCell, NibLoadable {
     }
     
     func configCell(_ pokemon: TypeElement) {
-        nameLabel.text = pokemon.type.name
-        nameLabel.textColor = .white
+        nameLabel.text = pokemon.type.name.uppercased()
+        imageView.image = UIImage(named: pokemon.type.typeIcon)
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 0.5*imageView.frame.width
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.white.cgColor
     }
 }
-

@@ -7,37 +7,52 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Coco-Gothic-Bold-trial.ttf">
+            <string>CocoGothic-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gog-eb-VK8" customClass="PokemonInfoCollectionViewCell" customModule="poke_test" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="270" height="55"/>
+            <rect key="frame" x="0.0" y="0.0" width="228" height="55"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="270" height="55"/>
+                <rect key="frame" x="0.0" y="0.0" width="228" height="55"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iTF-x8-4gr">
+                        <rect key="frame" x="10" y="5" width="40" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="9w2-1t-tNP"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bby-jq-I3p">
-                        <rect key="frame" x="0.0" y="0.0" width="270" height="55"/>
+                        <rect key="frame" x="55" y="0.0" width="168" height="55"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
-                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="CocoGothic-Bold" family="Coco Gothic" pointSize="18"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="a6x-wl-1GX"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="Bby-jq-I3p" secondAttribute="bottom" id="Dpb-q4-GpF"/>
-                <constraint firstItem="Bby-jq-I3p" firstAttribute="leading" secondItem="gog-eb-VK8" secondAttribute="leading" id="KTD-JO-Qg5"/>
-                <constraint firstAttribute="trailing" secondItem="Bby-jq-I3p" secondAttribute="trailing" id="RPg-yk-8nN"/>
-                <constraint firstItem="Bby-jq-I3p" firstAttribute="top" secondItem="gog-eb-VK8" secondAttribute="top" id="pbc-BV-diF"/>
+                <constraint firstAttribute="bottom" secondItem="Bby-jq-I3p" secondAttribute="bottom" id="Bcz-03-eGg"/>
+                <constraint firstItem="iTF-x8-4gr" firstAttribute="top" secondItem="gog-eb-VK8" secondAttribute="top" constant="5" id="cdn-fr-YJV"/>
+                <constraint firstItem="iTF-x8-4gr" firstAttribute="leading" secondItem="gog-eb-VK8" secondAttribute="leading" constant="10" id="emS-hR-czm"/>
+                <constraint firstItem="Bby-jq-I3p" firstAttribute="top" secondItem="gog-eb-VK8" secondAttribute="top" id="hgf-Kk-a6P"/>
+                <constraint firstItem="Bby-jq-I3p" firstAttribute="leading" secondItem="iTF-x8-4gr" secondAttribute="trailing" constant="5" id="m3T-ic-lsk"/>
+                <constraint firstAttribute="trailing" secondItem="Bby-jq-I3p" secondAttribute="trailing" constant="5" id="sPU-cl-QNs"/>
+                <constraint firstAttribute="bottom" secondItem="iTF-x8-4gr" secondAttribute="bottom" constant="5" id="vcN-lf-JFl"/>
             </constraints>
-            <size key="customSize" width="270" height="55"/>
+            <size key="customSize" width="228" height="55"/>
             <connections>
+                <outlet property="imageView" destination="iTF-x8-4gr" id="lne-hk-Z6B"/>
                 <outlet property="nameLabel" destination="Bby-jq-I3p" id="DGu-0C-ClE"/>
             </connections>
-            <point key="canvasLocation" x="72" y="19"/>
+            <point key="canvasLocation" x="-178.62595419847327" y="-50.352112676056343"/>
         </collectionViewCell>
     </objects>
 </document>
