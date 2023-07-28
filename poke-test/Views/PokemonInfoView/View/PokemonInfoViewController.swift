@@ -29,7 +29,7 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
     
     @IBOutlet private var collectionView: UICollectionView!
     
-    var dataArray = [TypeElement]()
+    @IBOutlet weak var squareImage: UIView!
     
     private enum Section: CaseIterable {
         case main
@@ -60,6 +60,15 @@ final class PokemonInfoViewController: UIViewController, UICollectionViewDelegat
         
         self.navigationItem.standardAppearance = appearance
         self.navigationItem.scrollEdgeAppearance = appearance
+        
+        squareImage.frame = CGRect(x: 0, y: 0, width: 200, height: 100)
+        squareImage.backgroundColor = .clear
+        view.addSubview(squareImage)
+        view.bringSubviewToFront(squareImage)
+        
+        UIView.animate(withDuration: 2.0) {
+            self.squareImage.frame = CGRect(x: 0, y: 100, width: 200, height: 100)
+        }
     }
     
     override func viewWillLayoutSubviews() {

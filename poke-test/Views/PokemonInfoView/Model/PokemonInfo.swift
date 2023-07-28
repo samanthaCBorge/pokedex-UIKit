@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import SVGKit
 
 struct PokemonInfo: Codable, Hashable {
     let id: Int

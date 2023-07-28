@@ -30,8 +30,6 @@ final class StatsView: UIView {
         viewFromXib.frame = bounds
         addSubview(viewFromXib)
         
-        progressBar.progress = 0.0
-        
         progressBar.layer.cornerRadius = 10
         progressBar.clipsToBounds = true
         progressBar.layer.sublayers![1].cornerRadius = 10
@@ -42,6 +40,17 @@ final class StatsView: UIView {
     func config(pokemon: Stat) {
         nameStat.text = pokemon.stat.name
         let myFloat = Float(pokemon.baseStat)/100
-        progressBar.progress = myFloat
+        
+        self.progressBar.layer.sublayers?.forEach { $0.removeAllAnimations() }
+        self.progressBar.setProgress(0.0, animated: false)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            
+            self.progressBar.setProgress(myFloat, animated: false)
+            
+            UIView.animate(withDuration: 2.0, delay: 0, options: [], animations: { [unowned self] in
+                self.progressBar.layoutIfNeeded()
+            })
+        }
     }
 }

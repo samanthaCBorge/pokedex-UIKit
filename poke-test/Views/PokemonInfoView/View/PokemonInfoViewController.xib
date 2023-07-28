@@ -9,8 +9,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Coco-Gothic-Bold-trial.ttf">
-            <string>CocoGothic-Bold</string>
+        <array key="TTRoundsNeue-DemiBold.ttf">
+            <string>TTRoundsNeue-DemiBold</string>
         </array>
     </customFonts>
     <objects>
@@ -22,6 +22,7 @@
                 <outlet property="imageView" destination="yDJ-4c-Gvs" id="OoP-e9-W1e"/>
                 <outlet property="nameLabel" destination="5k1-Jd-w1x" id="fLw-7U-MNi"/>
                 <outlet property="scrollView" destination="6Ho-Dj-7XH" id="W7R-kF-I7e"/>
+                <outlet property="squareImage" destination="5GI-23-91I" id="nup-JK-ISO"/>
                 <outlet property="stackView" destination="C7s-CG-6FQ" id="Bb2-Mk-XAt"/>
                 <outlet property="view" destination="YDr-Rp-PHn" id="IjJ-Om-tpE"/>
                 <outlet property="weight" destination="oCS-un-XVK" id="Dsj-Qi-vTg"/>
@@ -40,7 +41,7 @@
                     <rect key="frame" x="0.0" y="232" width="393" height="586"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="C7s-CG-6FQ">
-                            <rect key="frame" x="20" y="80" width="353" height="239"/>
+                            <rect key="frame" x="20" y="80.000000000000014" width="353" height="231.33333333333337"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5k1-Jd-w1x">
                                     <rect key="frame" x="0.0" y="0.0" width="353" height="43"/>
@@ -62,37 +63,37 @@
                                     </collectionViewFlowLayout>
                                 </collectionView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="vrI-lJ-vTl">
-                                    <rect key="frame" x="0.0" y="159" width="353" height="24.666666666666657"/>
+                                    <rect key="frame" x="0.0" y="159" width="353" height="21"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Height" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mps-py-KYQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="24.666666666666668"/>
-                                            <fontDescription key="fontDescription" name="CocoGothic-Bold" family="Coco Gothic" pointSize="18"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="53" height="21"/>
+                                            <fontDescription key="fontDescription" name="TTRoundsNeue-DemiBold" family="TT Rounds Neue" pointSize="18"/>
                                             <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="heightLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vrC-ZI-UvV">
-                                            <rect key="frame" x="72" y="0.0" width="96.333333333333314" height="24.666666666666668"/>
-                                            <fontDescription key="fontDescription" name="CocoGothic-Bold" family="Coco Gothic" pointSize="17"/>
+                                            <rect key="frame" x="75.666666666666686" y="0.0" width="88.666666666666686" height="21"/>
+                                            <fontDescription key="fontDescription" name="TTRoundsNeue-DemiBold" family="TT Rounds Neue" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="es5-SF-rBx">
-                                            <rect key="frame" x="183" y="0.0" width="57.666666666666657" height="24.666666666666668"/>
-                                            <fontDescription key="fontDescription" name="CocoGothic-Bold" family="Coco Gothic" pointSize="17"/>
+                                            <rect key="frame" x="187.33333333333334" y="0.0" width="52.333333333333343" height="21"/>
+                                            <fontDescription key="fontDescription" name="TTRoundsNeue-DemiBold" family="TT Rounds Neue" pointSize="17"/>
                                             <color key="textColor" systemColor="systemGrayColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="weightLabel" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oCS-un-XVK">
-                                            <rect key="frame" x="253.66666666666671" y="0.0" width="99.333333333333343" height="24.666666666666668"/>
-                                            <fontDescription key="fontDescription" name="CocoGothic-Bold" family="Coco Gothic" pointSize="17"/>
+                                            <rect key="frame" x="261" y="0.0" width="92" height="21"/>
+                                            <fontDescription key="fontDescription" name="TTRoundsNeue-DemiBold" family="TT Rounds Neue" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </stackView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stats" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mcs-QX-hlL">
-                                    <rect key="frame" x="0.0" y="211.66666666666663" width="353" height="27.333333333333343"/>
-                                    <fontDescription key="fontDescription" name="CocoGothic-Bold" family="Coco Gothic" pointSize="20"/>
+                                    <rect key="frame" x="0.0" y="208" width="353" height="23.333333333333343"/>
+                                    <fontDescription key="fontDescription" name="TTRoundsNeue-DemiBold" family="TT Rounds Neue" pointSize="20"/>
                                     <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
