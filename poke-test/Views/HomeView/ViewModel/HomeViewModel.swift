@@ -12,6 +12,7 @@ protocol HomeViewModelRepresentable {
     var regionListSubject: PassthroughSubject<[Region], Failure> { get }
     func loadData()
     func goToPokedex(model: Region)
+    func sendTo(_ type: MenuOption)
     func exit()
 }
 
@@ -56,5 +57,16 @@ extension HomeViewModel: HomeViewModelRepresentable {
         store.readRegionList()
             .sink(receiveCompletion: completion, receiveValue: recieved)
             .store(in: &cancellables)
+    }
+    
+    func sendTo(_ type: MenuOption) {
+        switch type {
+        case .teams:
+            router?.process(route: .showTeamList)
+        case .logOut:
+            router?.exit()
+        default:
+            break
+        }
     }
 }

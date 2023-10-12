@@ -38,7 +38,7 @@ final class PokemonListViewModel<R: AppRouter> {
 extension PokemonListViewModel: PokemonListViewModelRepresentable {
     
     func saveTeam(title: String) {
-        let userId = Auth.auth().currentUser!.uid
+        guard let userId = Auth.auth().currentUser?.uid else { return }
         let id = UUID().uuidString
         let team = Team(identifier: id, title: title, region: region, pokemons: selectedPokemons)
         

@@ -27,6 +27,12 @@ protocol PokemonInfoStore {
     func readPokemonInfo(pokemon: Pokemon) -> Future<PokemonInfo, Failure>
 }
 
+protocol TeamListStore {
+    func readTeams(userId: String) -> Future<[String : Team], Failure>
+    func deleteTeam(userId: String,team: Team) -> Future<Bool, Failure>
+    func updateTitleTeam(userId: String, team: Team) -> Future<Bool, Failure>
+}
+
 final class APIManager {
     private var database: DatabaseReference {
         Database.database().reference()
@@ -86,7 +92,9 @@ extension APIManager: PokedexListStore {
     func readPokedex(region: Region) -> Future<PokedexResponse, Failure> {
         return request(for: region.url)
     }
-    
+}
+
+extension APIManager: PokemonListStore {
     func saveTeam(userId: String, model: Team) -> Future<Bool, Failure> {
         return Future { [unowned self] promise in
             do {
@@ -99,41 +107,51 @@ extension APIManager: PokedexListStore {
         }
     }
     
-}
-
-extension APIManager: PokemonListStore {
     func readPokemons(pokedex: Pokedex) -> Future<PokemonResponse, Failure> {
         return request(for: pokedex.url)
     }
 }
-
-struct Team: Codable, Identifiable {
-    let id = UUID().uuidString
-    var identifier: String
-    var title: String
-    var region: String
-    var pokemons: [Pokemon]
-    
-    enum CodingKeys: String, CodingKey {
-        case identifier
-        case title
-        case region
-        case pokemons
-    }
-}
-
-extension Team: Hashable {
-    static func == (lhs: Team, rhs: Team) -> Bool {
-        lhs.id == rhs.id
+extension APIManager: TeamListStore {
+    func readTeams(userId: String) -> Future<[String : Team], Failure> {
+        return Future { [unowned self] promise in
+            database.child(userId).child("teams").observeSingleEvent(of: .value, with: { snapshot in
+                guard let value = snapshot.value else { return }
+                do {
+                    let response = try FirebaseDecoder().decode([String: Team].self, from: value)
+                    promise(.success(response))
+                } catch {
+                    promise(.failure(.APIError(error)))
+                }
+            })
+        }
     }
     
-    public func hash(into hasher: inout Hasher) {
-        return hasher.combine(id)
+    func deleteTeam(userId: String, team: Team) -> Future<Bool, Failure> {
+        return Future { [unowned self] promise in
+            database.child(userId).child("teams").child(team.identifier).removeValue { error, _ in
+                if let _ = error {
+                    promise(.success(false))
+                } else {
+                    promise(.success(true))
+                }
+            }
+        }
     }
-}
-
-extension Team: Comparable {
-    static func <(lhs: Team, rhs: Team) -> Bool {
-        lhs.title < rhs.title
+    
+    func updateTitleTeam(userId: String, team: Team) -> Future<Bool, Failure> {
+        return Future { [unowned self] promise in
+            do {
+                let data = try FirebaseEncoder().encode(team)
+                database.child(userId).child("teams").child(team.identifier).updateChildValues(data as! [AnyHashable : Any]) { error, _ in
+                    if let _ = error {
+                        promise(.success(false))
+                    } else {
+                        promise(.success(true))
+                    }
+                }
+            } catch {
+                promise(.success(false))
+            }
+        }
     }
 }
